@@ -1,4 +1,7 @@
 <?php include_once("../static/layouts/header.php") ?>
+<?php
+    echo $_SERVER['DOCUMENT_ROOT'];
+?>
 <div class="container">
     <div class="mt-5"></div>
     <form onsubmit="return taskValidation()" method="POST" action="create_task.php">
