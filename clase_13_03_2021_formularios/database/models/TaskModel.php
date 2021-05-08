@@ -28,32 +28,4 @@ class TaskModel
             $this->db->close();
         }
     }
-    public function listTasks(){
-        $sql = "SELECT * FROM tasks";
-        $result = $this->db->query($sql);
-        $this->db->close();
-        return $result;
-    }
-
-    public function deleteTask($id){
-        $sql = "DELETE FROM tasks WHERE id={$id}";
-        if ($this->db->query($sql) !== TRUE) {
-            echo "Hubo un error crear la tarea";
-        }
-        $this->db->close();
-    }
-
-    public function getTask($id){
-        $sql = "SELECT * FROM tasks WHERE id={$id}";
-        $result = $this->db->query($sql);
-        $this->db->close();
-        return $result;
-    }
-    public function updateTask($data){
-        $sql = "UPDATE tasks SET task='{$data['task']}', description='{$data['description']}', date='{$data['date']}' WHERE id={$data['id']}";
-        if ($this->db->query($sql) !== TRUE) {
-            echo "Hubo un error crear la tarea";
-        }
-        $this->db->close();
-    }
 }
