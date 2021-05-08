@@ -8,7 +8,9 @@ if (!empty($task) || !empty($description) || !empty($date)) {
     // database connection
     $taskModel = new TaskModel();
     $taskModel->insert($task, $description, $date);
-}
-else{
+    $pageToRedirect = "/web1_g1/clase_13_03_2021_formularios/pages/list_tasks.php";
+    header("Location: {$pageToRedirect}");
+    exit;
+} else {
     echo "Todos los campos deben estar llenos";
 }
