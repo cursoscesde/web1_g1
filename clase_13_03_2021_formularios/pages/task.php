@@ -1,3 +1,14 @@
+<?php
+// 1. iniciar servicio de session
+session_start();
+// preguntar por los datos de sesión
+if ($_SESSION['rol'] != 'admin') {
+    $pageToRedirect = "/web1_g1/clase_13_03_2021_formularios/pages/login.php";
+    header("Location: {$pageToRedirect}");
+    exit;
+}
+?>
+
 <?php include_once("../static/layouts/header.php") ?>
 <div class="container">
     <div class="mt-5"></div>
@@ -17,4 +28,4 @@
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
 </div>
-<?php include_once("../static/layouts/footer.php") ?>
+<?php include_once("../static/layouts/footer.php")?>
