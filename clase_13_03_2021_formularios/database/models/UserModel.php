@@ -2,7 +2,6 @@
 <?php
 
 class UserModel{
-
     private $db = NULL;
     public function __construct()
     {

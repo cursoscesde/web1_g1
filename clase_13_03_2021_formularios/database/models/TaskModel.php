@@ -28,4 +28,28 @@ class TaskModel
             $this->db->close();
         }
     }
+
+    public function getTasks(){
+        if ($this->db->connect_errno) {
+            echo "Falló la conexión a MYSQL";
+            exit();
+        } else {
+            $sql = "SELECT * FROM tasks";
+            $tasks = $this->db->query($sql);
+            $this->db->close();
+            return $tasks;
+        }
+    }
+
+    public function getTask($id){
+        $sql = "SELECT * FROM tasks WHERE id={$id}";
+        $task = $this->db->query($sql)->fetch_assoc();
+        return $task;
+    }
+
+    public function updateTask($id, $task, $description, $date){
+        $sql = "UPDATE tasks SET task='{$task}', description='{$description}', date='{$date}' WHERE id={$id}";
+        $this->db->query($sql);
+        $this->db->close();
+    }
 }
