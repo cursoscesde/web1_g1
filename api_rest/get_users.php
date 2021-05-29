@@ -1,13 +1,13 @@
 <?php
 
 if($_SERVER['REQUEST_METHOD'] == 'GET'){
+    require_once "{$_SERVER['DOCUMENT_ROOT']}/web1_g1/api_rest/database/models/UserModel.php";
+    $userModel = new UserModel();
+    $users = $userModel->getUsers();
     $user = array(
         "status" => "ok",
-        "user" => array(
-            "name" => "juan",
-            "email" => "juan@correo.com",
-            "age" => 25,
-        )
+        "totalResults" => count($users),
+        "data" => $users
     );
     echo json_encode($user);
 }
