@@ -10,14 +10,15 @@ class UserModel{
         // obtengo la conexión
         $this->db = $dbConnection->connect();
     }
-    public function insert(){
+    public function insert($username, $email, $password, $role, $section){
 
-        $sql = "INSERT INTO users (email, password, name) VALUES('donjuan@gmail.com','123456', 'juan')";
+        $sql = "INSERT INTO users (username, email, password, role, section) VALUES('{$username}','{$email}','{$password}','{$role}', '{$section}')";
         $this->db->query($sql);
-
     }
-    public function getUser(){
-
+    public function getUser($id){
+        $sql = "SELECT username, email, role FROM users WHERE id={$id}";
+        $users = $this->db->query($sql);
+        return $users->fetch_assoc();
     }
 
     public function getUsers(){
