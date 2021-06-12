@@ -36,4 +36,14 @@ class UserModel{
             return $arrayUsers;
         }
     }
+
+    public function updateUSer($user){
+        $sql = "UPDATE users SET username='{$user->username}', email='{$user->email}', password='{$user->password}', role='{$user->role}', section='{$user->section}' WHERE id={$user->id}";
+        $this->db->query($sql);
+    }
+
+    public function deleteUser($id){
+        $sql="DELETE FROM users WHERE id={$id}";
+        $this->db->query($sql);
+    }
 }
